@@ -14,25 +14,38 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="10dp"
+
         android:clickable="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="19dp">
             <ImageView
                 android:id="@+id/id_imageView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:importantForAccessibility="no"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                android:maxHeight="214dp"
+                android:background="@color/creme"
                 android:scaleType="centerCrop"/>
             <TextView
-                android:id="@+id/id_textView"
+                android:id="@+id/id_textViewName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:paddingLeft="8dp"
                 android:paddingTop="8dp"
-                android:paddingBottom="15dp"/>
+                android:theme="@style/TextStyle"/>
+            <TextView
+                android:id="@+id/id_textViewType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="@color/brownish_grey"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

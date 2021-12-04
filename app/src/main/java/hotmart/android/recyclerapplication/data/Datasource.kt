@@ -2,6 +2,7 @@ package hotmart.android.recyclerapplication.data
 
 import hotmart.android.recyclerapplication.R
 import hotmart.android.recyclerapplication.model.Afirmacao
+import java.net.URL
 
 class Datasource {
 
@@ -16,7 +17,8 @@ class Datasource {
             Afirmacao( R.string.afirmacao7, R.drawable.image7),
             Afirmacao( R.string.afirmacao8, R.drawable.image8),
             Afirmacao( R.string.afirmacao9, R.drawable.image9),
-            Afirmacao( R.string.afirmacao10, R.drawable.image10),
+            Afirmacao( R.string.afirmacao10, R.drawable.image10)
         )
     }
+
 }

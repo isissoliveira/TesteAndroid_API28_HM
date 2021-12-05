@@ -9,7 +9,7 @@ import com.squareup.moshi.Json
 data class Location (
     @Json(name = "id")   val id : Int,
     @Json(name = "name")   val name : String,
-    @Json(name = "review")  val review : Double,
+    @Json(name = "review")  val review : Float,
     @Json(name = "type")  val type : String,
 
         ){

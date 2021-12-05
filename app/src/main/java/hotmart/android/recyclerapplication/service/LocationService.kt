@@ -16,14 +16,15 @@ private const val BASE_URL_LOCATIONS =  "https://hotmart-mobile-app.herokuapp.co
 
 /*  Moshi é uma biblioteca de terceiros que utilizo para converter strings JSON em objetos Kotlin
     Abaixo estamos criando um objeto desta biblioteca utilizando o Moshi Builder
-* */
+*
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
-
+*/
 
 /*  Retrofit é uma biblioteca de terceiros que utilizo para estabelecer comunicação com o serviço REST
     encontrado na URL "https://hotmart-mobile-app.herokuapp.com/"  e receber uma resposta
+    Utilizo o Converrter GSON para converter o objeto JSON em objeto Kotlin
 * */
 private val retrofit = Retrofit.Builder()
     //.addConverterFactory(MoshiConverterFactory.create(moshi))

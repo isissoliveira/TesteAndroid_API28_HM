@@ -12,6 +12,7 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.Phonenumber
 import hotmart.android.recyclerapplication.R
 import hotmart.android.recyclerapplication.model.LocationDetail
+import hotmart.android.recyclerapplication.model.schedule.DaySchedule
 import hotmart.android.recyclerapplication.service.SingleLocationDetailApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,7 +26,7 @@ class DetailActivity : AppCompatActivity() {
 
         var meuContexto = this
         val locationId = this.intent.extras?.getInt("location_id").toString()
-        Toast.makeText(this, "Location ID é $locationId", Toast.LENGTH_LONG).show()
+        //Toast.makeText(this, "Location ID é $locationId", Toast.LENGTH_LONG).show()
         Log.i(ContentValues.TAG, "===============Location ID é $locationId=================" )
 
         preencheTela( locationId)
@@ -92,7 +93,17 @@ class DetailActivity : AppCompatActivity() {
                                 )
 
         //diasSchedules.forEach {  Log.i(ContentValues.TAG, "=======>${it?.open}" ) }
+        var indiceDiaInicial : Int = 0
+        var diaInicial : DaySchedule? = diasSchedules[0]
 
+        // BUSCA O PRIMEIRO DIA PARA O QUAL HÁ SCHEDULE NO JSON
+        for(  (i, dia) in diasSchedules.withIndex() ){
+            if( dia != null){
+               indiceDiaInicial = i
+               diaInicial = dia
+               break
+            }
+        }
 
         // LISTA DOS NOMES ( ABREVIADOS ) EQUIVALENTES AOS DIAS DA SEMANA DA LISTA "diasSchedules" DE DaySchedule
         val nomesDiasschedules = listOf( getString( R.string.monday)    ,
@@ -105,17 +116,25 @@ class DetailActivity : AppCompatActivity() {
         val stringE     : String = getString( R.string.and)   // " e "
         val stringAt    : String = getString( R.string.at)    // " às "
 
-        var textoIntervDiaIni = getString( R.string.monday)
+        var textoIntervDiaIni =  nomesDiasschedules[indiceDiaInicial] // getString( R.string.monday)
         var textoIntervDiaFim = ""
 
-        var textoHoraOpenAtual : String? = objSchedule?.monday?.open
-        var textoHoraCloseAtual: String? = objSchedule?.monday?.close
+        var textoHoraOpenAtual : String? = diaInicial?.open      // objSchedule?.monday?.open
+        var textoHoraCloseAtual: String? = diaInicial?.close     // objSchedule?.monday?.close
         var textoIntervHorarios = " $textoHoraOpenAtual $stringAt $textoHoraCloseAtual "
 
         var diasSequenciais = 0
 
+        // SE APENAS O ÚLTIMO DIA ( sunday) FOI ENCONTRADO, ENTÃO RETORNA
+        if( indiceDiaInicial == ( diasSchedules.size - 1 )){
+           return "$textoIntervDiaIni $stringA $textoIntervDiaFim : $textoIntervHorarios "
+        }
+
         // O LAÇO É INICIADO NA TERÇA-FEIRA ( it.schedule.tuesday )
         for ( (i, sched) in diasSchedules.withIndex() ){
+             if( sched == null || i == indiceDiaInicial ){
+                 continue
+             }
 
             //BUSCA OS PRÓXIMOS DIAS QUE TEM MESMO HORÁRIO DE open E close
             if( sched?.open.equals(textoHoraOpenAtual) && sched?.close.equals(textoHoraCloseAtual)  ){
@@ -131,7 +150,7 @@ class DetailActivity : AppCompatActivity() {
                     textoSched += "$textoIntervDiaIni ${ if(diasSequenciais > 1)  stringA else stringE } $textoIntervDiaFim : $textoIntervHorarios \n"
                 }
 
-                // REINICIAMOS AS VARIÁVEIS PARA CONSIDERAR O PRÓXIMO INTERVALO ENCONTRADO
+                // REINICIAMOS AS VARIÁVEIS PARA RECOMEÇAR COM O PRÓXIMO INTERVALO open E close ENCONTRADO
                 textoIntervDiaIni   =   nomesDiasschedules[i]
                 textoIntervDiaFim   =   ""
                 textoHoraOpenAtual  =   sched?.open

@@ -9,8 +9,11 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import coil.Coil
 import hotmart.android.recyclerapplication.R
+import hotmart.android.recyclerapplication.activity.DetailActivity
 import hotmart.android.recyclerapplication.data.Datasource
 import hotmart.android.recyclerapplication.model.Afirmacao
 import hotmart.android.recyclerapplication.model.Location
@@ -66,7 +69,7 @@ class LocatioAdapter (private val dataset: List<Location> ) : RecyclerView.Adapt
             val imageView: ImageView = view.findViewById(R.id.id_imageView)
             val ratingBar: RatingBar = view.findViewById(R.id.id_ratingBarReview)
             var textViewReview : TextView = view.findViewById(R.id.id_textViewReview)
-
+            var cardView : CardView = view.findViewById(R.id.id_cardView)
 
             textViewName.text = location.name
             textViewType.text = location.type
@@ -78,9 +81,14 @@ class LocatioAdapter (private val dataset: List<Location> ) : RecyclerView.Adapt
                 val afirmacao : Afirmacao = arrayImg[location.id]
                 imageView.setImageResource(afirmacao.imageResourceId)
             }catch( e: Exception){
-                Toast.makeText( myContext, "Não foram encontradas imagens para todos os itens", Toast.LENGTH_LONG)
+               // Toast.makeText( myContext, "Não foram encontradas imagens para todos os itens", Toast.LENGTH_LONG).show()
             }
 
+            cardView.setOnClickListener{
+                val intent = Intent(cardView.context, DetailActivity::class.java)
+                intent.putExtra("location_id", location.id )
+                cardView.context.startActivity(intent)
+            }
 
 
             //   Picasso.with(view.context)
@@ -94,11 +102,6 @@ class LocatioAdapter (private val dataset: List<Location> ) : RecyclerView.Adapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
-
-        adapterLayout.setOnClickListener{
-            val intent = Intent(parent.context, DetailActivity::class.java)
-            parent.context.startActivity(intent)
-        }
 
         return LocationViewHolder(adapterLayout, parent.context)
     }

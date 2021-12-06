@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".activity.DetailActivity"
+        tools:showIn="@layout/activity_detail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--TÍTULO + RATING BAR -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingBottom="16dp"
+            android:background="@color/topaz">
+
+            <TextView
+            android:id="@+id/id_textViewNameDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textStyle="normal"
+            android:textSize="32sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"/>
+
+            <!-- RATING BAR-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <RatingBar
+                    android:id="@+id/id_ratingBarReviewDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="15dp"
+                    android:max="5"
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:theme="@style/Widget.AppCompat.RatingBar"
+                    android:clickable="false"
+                    android:isIndicator="true"
+                    android:focusable="false"
+                    android:progressTint="@color/golden_yellow"
+                    android:progressBackgroundTint="@color/black_20"
+                    style="?attr/ratingBarStyleSmall"       />
+
+                <TextView
+                    android:id="@+id/id_textViewReviewDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- FOTOS  A  ENDEREÇO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginRight="26dp"
+            android:orientation="vertical">
+
+            <TextView
+            android:id="@+id/id_textViewFotos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextStyle"
+            android:text="@string/fotos"
+            android:layout_marginTop="32dp"/>
+
+            <TextView
+                android:id="@+id/id_textViewSobre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextStyle"
+                android:text="@string/sobre"
+                android:layout_marginTop="32dp"/>
+
+            <TextView
+                android:id="@+id/id_textViewSobreConteudo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextStyle2"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="16dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:id="@+id/id_imageViewSched"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/ic_time"
+                    android:scaleType="centerCrop"/>
+                <TextView
+                    android:id="@+id/id_textViewSchedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextStyle2"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:id="@+id/id_imageViewPhone"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/ic_phone"
+                    android:scaleType="centerCrop"/>
+                <TextView
+                    android:id="@+id/id_textViewPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextStyle2"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:id="@+id/id_imageViewAddress"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/ic_pin"
+                    android:scaleType="centerCrop"/>
+                <TextView
+                    android:id="@+id/id_textViewAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextStyle2"
+                    android:justificationMode="inter_word"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import hotmart.android.recyclerapplication.adapter.LocatioAdapter
 import hotmart.android.recyclerapplication.model.Location
 import hotmart.android.recyclerapplication.model.ListLocations
-import hotmart.android.recyclerapplication.service.SingleLocationApi
 import hotmart.android.recyclerapplication.service.SingleListLocationsApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var myAdapter: RecyclerView.Adapter<*>
 
     var meuContexto = this
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +38,6 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse( call: Call<ListLocations>, response: Response<ListLocations> ) {
 
-                Toast.makeText( meuContexto, response.body().toString(),Toast.LENGTH_LONG)
-
                 if (response.isSuccessful) {
                     Log.i(TAG, "===============SUCESSO=================" )
                     recyclerView = findViewById<RecyclerView>(R.id.recycler_view).apply {
@@ -57,34 +53,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ListLocations>, t: Throwable) {
-                t.printStackTrace()
-            }
-
-        })
-    }
-
-    private fun _preencheRecyclerView() {
-
-        SingleLocationApi.RETROFIT_INTERFACE.getLocations().enqueue( object : Callback<List<Location>>{
-
-            override fun onResponse(
-                call: Call<List<Location>>,
-                response: Response<List<Location>>
-            ) {
-                if (response.isSuccessful) {
-                    Log.i(TAG, "===============SUCESSO=================" )
-                    recyclerView = findViewById<RecyclerView>(R.id.recycler_view).apply {
-
-                        myAdapter = LocatioAdapter( response.body()!!)
-                        layoutManager = meuGridLayoutManager
-                        adapter = myAdapter
-
-                    }
-                    recyclerView.setHasFixedSize(true)
-                }
-            }
-
-            override fun onFailure(call: Call<List<Location>>, t: Throwable) {
                 t.printStackTrace()
             }
 

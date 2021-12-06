@@ -1,19 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.DetailActivity"
-    android:orientation="vertical">
+    app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewDetail">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_detail"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="10dp" >
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
-    </androidx.appcompat.widget.Toolbar>
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_detail"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:fitsSystemWindows="true"
+            android:theme="@style/Theme.RecyclerApplication.AppBarOverlay"        >
 
-</LinearLayout>
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout_detail"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:contentScrim="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:toolbarId="@+id/toolbar_detail"
+                android:background="@drawable/image5">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/Theme.RecyclerApplication.PopupOverlay" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <include layout="@layout/content_scrolling_activity_detail"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewDetail"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:itemIconTint="@color/topaz"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

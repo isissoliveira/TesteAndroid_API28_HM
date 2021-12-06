@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.RecyclerApplication" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <!--<style name="Theme.RecyclerApplication" parent="Theme.MaterialComponents.DayNight.DarkActionBar">-->
+    <style name="Theme.RecyclerApplication" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/topaz</item>
         <item name="colorPrimaryVariant">#0C6066</item>

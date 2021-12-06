@@ -13,6 +13,23 @@
     <string name="afirmacao10">I will be present in all the moments that this day brings.</string>
 
     <string name="home">Home</string>
+    <string name="fotos">FOTOS</string>
+    <string name="sobre">SOBRE</string>
+    <string name="vazio"></string>
+
+    <string name="to"> a </string>
+    <string name="and"> e </string>
+    <string name="at"> às </string>
+
+    <string name="monday">seg</string>
+    <string name="tuesday">ter</string>
+    <string name="wednesday">qua</string>
+    <string name="thursday">qui</string>
+    <string name="friday">sex</string>
+    <string name="saturday">sáb</string>
+    <string name="sunday">dom</string>
+
+
     <string name="title_activity_detalhe">DetalheActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -113,4 +130,5 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_detail_scrolling">DetailScrollingActivity</string>
 </resources>

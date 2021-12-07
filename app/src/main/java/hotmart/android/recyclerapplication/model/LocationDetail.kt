@@ -1,10 +1,7 @@
 package hotmart.android.recyclerapplication.model
 
-import android.content.ContentValues
-import android.util.Log
 import com.google.gson.*
 import com.google.gson.annotations.SerializedName
-import hotmart.android.recyclerapplication.model.schedule.DaySchedule
 import java.lang.reflect.Type
 
 data class LocationDetail (
@@ -27,8 +24,14 @@ data class LocationDetail (
         val thursday    : DaySchedule?,
         val friday      : DaySchedule?,
         val saturday    : DaySchedule?
-    )
+    ) {
 
+        data class DaySchedule(
+            val open: String,
+            val close: String
+
+        )
+    }
 
     // CUSTOM DESERIALIZER PARA TRATAR QUANDO O ELEMENTO "SCHEDULE" VEM COMO ARRAY NO JSON
     class LocationDetailDeserializer : JsonDeserializer<LocationDetail> {
@@ -48,7 +51,7 @@ data class LocationDetail (
                     var jsonElementoSchedule    : JsonElement = jsonObject.get("schedule")
                     val novoObjetoSchedule      : LocationDetail.Schedule
 
-                    jsonElementoSchedule?.let {
+                    jsonElementoSchedule.let {
                         if( !it.isJsonNull && it.isJsonArray ){ // SE O ELEMENTO "schedule" É UM ARRAY JSON
 
                             // O ELEMENTO [0] DO ARRAY "elementoSchedule" SERÁ O "novoObjetoSchedule"

@@ -3,16 +3,14 @@ package hotmart.android.recyclerapplication.activity
 import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.telephony.PhoneNumberUtils
 import android.util.Log
 import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import com.google.i18n.phonenumbers.PhoneNumberUtil
-import com.google.i18n.phonenumbers.Phonenumber
 import hotmart.android.recyclerapplication.R
 import hotmart.android.recyclerapplication.model.LocationDetail
-import hotmart.android.recyclerapplication.model.schedule.DaySchedule
 import hotmart.android.recyclerapplication.service.SingleLocationDetailApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -63,9 +61,10 @@ class DetailActivity : AppCompatActivity() {
 
                         textViewAddress.text        = it.adress
 
-                        var u : PhoneNumberUtil = PhoneNumberUtil.getInstance()
-                        var pn : Phonenumber.PhoneNumber = u.parse( it.phone, "US")
-                        textViewPhone.text = u.format(pn, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL)
+                        textViewPhone.text          = PhoneNumberUtils.formatNumber( it.phone, "US")
+                        //var u : PhoneNumberUtil = PhoneNumberUtil.getInstance()
+                        //var pn : Phonenumber.PhoneNumber = u.parse( it.phone, "US")
+                        //textViewPhone.text = u.format(pn, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL)
 
                     } // FIM Let
 
@@ -86,15 +85,15 @@ class DetailActivity : AppCompatActivity() {
         var textoSched = ""
 
         // LISTA DE OBJETOS DaySchedule DO NOSSO OBJETO Schedule
-        val diasSchedules = listOf( objSchedule?.monday    ,
-                                    objSchedule?.tuesday   ,     objSchedule?.wednesday   ,
-                                    objSchedule?.thursday  ,     objSchedule?.friday      ,
-                                    objSchedule?.saturday  ,     objSchedule?.sunday
+        val diasSchedules = listOf( objSchedule.monday    ,
+                                    objSchedule.tuesday   ,     objSchedule.wednesday   ,
+                                    objSchedule.thursday  ,     objSchedule.friday      ,
+                                    objSchedule.saturday  ,     objSchedule.sunday
                                 )
 
         //diasSchedules.forEach {  Log.i(ContentValues.TAG, "=======>${it?.open}" ) }
         var indiceDiaInicial : Int = 0
-        var diaInicial : DaySchedule? = diasSchedules[0]
+        var diaInicial : LocationDetail.Schedule.DaySchedule? = diasSchedules[0]
 
         // BUSCA O PRIMEIRO DIA PARA O QUAL HÁ SCHEDULE NO JSON
         for(  (i, dia) in diasSchedules.withIndex() ){
@@ -137,7 +136,7 @@ class DetailActivity : AppCompatActivity() {
              }
 
             //BUSCA OS PRÓXIMOS DIAS QUE TEM MESMO HORÁRIO DE open E close
-            if( sched?.open.equals(textoHoraOpenAtual) && sched?.close.equals(textoHoraCloseAtual)  ){
+            if( sched.open.equals(textoHoraOpenAtual) && sched.close.equals(textoHoraCloseAtual)  ){
                 textoIntervDiaFim = nomesDiasschedules[i]
                 diasSequenciais ++
             }
@@ -153,8 +152,8 @@ class DetailActivity : AppCompatActivity() {
                 // REINICIAMOS AS VARIÁVEIS PARA RECOMEÇAR COM O PRÓXIMO INTERVALO open E close ENCONTRADO
                 textoIntervDiaIni   =   nomesDiasschedules[i]
                 textoIntervDiaFim   =   ""
-                textoHoraOpenAtual  =   sched?.open
-                textoHoraCloseAtual =   sched?.close
+                textoHoraOpenAtual  =   sched.open
+                textoHoraCloseAtual =   sched.close
                 textoIntervHorarios =   " $textoHoraOpenAtual $stringAt $textoHoraCloseAtual "
                 diasSequenciais     =   0
             }

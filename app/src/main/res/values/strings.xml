@@ -29,6 +29,7 @@
     <string name="saturday">sáb</string>
     <string name="sunday">dom</string>
 
+    <string name="falha_conexao">Não foi possível encontrar os dados desejados. Tente mais tarde</string>
 
     <string name="title_activity_detalhe">DetalheActivity</string>
     <string name="large_text">

@@ -1,9 +1,6 @@
 package hotmart.android.recyclerapplication.service
 
-import hotmart.android.recyclerapplication.model.Location
 import hotmart.android.recyclerapplication.model.ListLocations
-import hotmart.android.recyclerapplication.model.LocationDetail
-import hotmart.android.recyclerapplication.model.Propriedade
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

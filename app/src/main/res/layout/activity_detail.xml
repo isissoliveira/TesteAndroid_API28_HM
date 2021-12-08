@@ -28,9 +28,12 @@
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:toolbarId="@+id/toolbar_detail"
-                android:background="@drawable/image5">
-
+                app:toolbarId="@+id/toolbar_detail">
+                <ImageView
+                    android:id="@+id/id_imageViewToolBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"/>
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar_detail"
                     android:layout_width="match_parent"

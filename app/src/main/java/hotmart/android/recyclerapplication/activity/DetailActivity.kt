@@ -1,16 +1,29 @@
 package hotmart.android.recyclerapplication.activity
 
 import android.content.ContentValues
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.telephony.PhoneNumberUtils
 import android.util.Log
+import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.core.graphics.drawable.toDrawable
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.QuerySnapshot
+import com.squareup.picasso.Picasso
 import hotmart.android.recyclerapplication.R
+import hotmart.android.recyclerapplication.adapter.FotoAdapter
 import hotmart.android.recyclerapplication.model.LocationDetail
+import hotmart.android.recyclerapplication.model.LocationImage
+import hotmart.android.recyclerapplication.service.FireStoreService
 import hotmart.android.recyclerapplication.service.SingleLocationDetailApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,19 +31,28 @@ import retrofit2.Response
 
 
 class DetailActivity : AppCompatActivity() {
+    private lateinit var minhasImagens: ArrayList<LocationImage>
+    var meuContexto = this
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        var meuContexto = this
-        val locationId = this.intent.extras?.getInt("location_id").toString()
-        //Toast.makeText(this, "Location ID é $locationId", Toast.LENGTH_LONG).show()
+        var locationId = this.intent.extras?.getInt("location_id").toString()
+
         Log.i(ContentValues.TAG, "===============Location ID é $locationId=================" )
+
+        minhasImagens = ArrayList<LocationImage>()
+
+        buscaImagensFirestore( locationId)
 
         preencheTela( locationId)
 
         acaoVoltar()
     }
+
+
+
 
     private fun preencheTela( id : String) {
         SingleLocationDetailApi.RETROFIT_INTERFACE
@@ -46,11 +68,23 @@ class DetailActivity : AppCompatActivity() {
                     val textViewRating  : TextView          = findViewById( R.id.id_textViewReviewDetail)
                     var textViewSobreConteudo : TextView    = findViewById( R.id.id_textViewSobreConteudo)
                     var textViewSchedule: TextView          = findViewById( R.id.id_textViewSchedule)
-                    var textViewPhone: TextView             = findViewById( R.id.id_textViewPhone)
-                    var textViewAddress: TextView           = findViewById( R.id.id_textViewAddress)
+                    var textViewPhone   : TextView          = findViewById( R.id.id_textViewPhone)
+                    var textViewAddress : TextView          = findViewById( R.id.id_textViewAddress)
+                    var imgtoolbarDetail: ImageView         = findViewById(R.id.id_imageViewToolBar)
 
                     // SE locationDetail não for null executamos o trecho abaixo
                     locationDetail?.let{
+
+                        // PREENCHE O RECYCLER VIEW DOS ITENNS DO BLOCO "FOTOS"
+                        var recyclerView = findViewById<RecyclerView>(R.id.recycler_view_fotos).apply {
+                            var fotos       = minhasImagens.filter { img -> !img.principal }
+                            var myAdapter   = FotoAdapter( fotos)
+                            layoutManager   = LinearLayoutManager(meuContexto, LinearLayoutManager.HORIZONTAL ,false)
+                            adapter         = myAdapter
+                            isHorizontalScrollBarEnabled = false
+                        }
+                        recyclerView.setHasFixedSize(true)
+
 
                         textViewTitulo.text         = it.name
                         textViewRating.text         = it.review.toString()
@@ -62,9 +96,18 @@ class DetailActivity : AppCompatActivity() {
                         textViewAddress.text        = it.adress
 
                         textViewPhone.text          = PhoneNumberUtils.formatNumber( it.phone, "US")
-                        //var u : PhoneNumberUtil = PhoneNumberUtil.getInstance()
-                        //var pn : Phonenumber.PhoneNumber = u.parse( it.phone, "US")
-                        //textViewPhone.text = u.format(pn, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL)
+
+                        minhasImagens?.let {
+                            val imagens : List<LocationImage>? = minhasImagens?.filter { img -> img.principal }
+
+                            imagens?.let {
+                                if(imagens.isNotEmpty()){
+                                    Picasso.with( meuContexto)
+                                        .load(imagens.get(0).storage )
+                                        .into(imgtoolbarDetail)
+                                }
+                            }
+                        }
 
                     } // FIM Let
 
@@ -79,7 +122,6 @@ class DetailActivity : AppCompatActivity() {
         })
     }
 
-
     private fun textoSchedule(objSchedule : LocationDetail.Schedule ) : String{
 
         var textoSched = ""
@@ -92,8 +134,8 @@ class DetailActivity : AppCompatActivity() {
                                 )
 
         //diasSchedules.forEach {  Log.i(ContentValues.TAG, "=======>${it?.open}" ) }
-        var indiceDiaInicial : Int = 0
-        var diaInicial : LocationDetail.Schedule.DaySchedule? = diasSchedules[0]
+        var indiceDiaInicial    : Int = 0
+        var diaInicial          : LocationDetail.Schedule.DaySchedule? = diasSchedules[0]
 
         // BUSCA O PRIMEIRO DIA PARA O QUAL HÁ SCHEDULE NO JSON
         for(  (i, dia) in diasSchedules.withIndex() ){
@@ -118,9 +160,9 @@ class DetailActivity : AppCompatActivity() {
         var textoIntervDiaIni =  nomesDiasschedules[indiceDiaInicial] // getString( R.string.monday)
         var textoIntervDiaFim = ""
 
-        var textoHoraOpenAtual : String? = diaInicial?.open      // objSchedule?.monday?.open
-        var textoHoraCloseAtual: String? = diaInicial?.close     // objSchedule?.monday?.close
-        var textoIntervHorarios = " $textoHoraOpenAtual $stringAt $textoHoraCloseAtual "
+        var textoHoraOpenAtual : String?    = diaInicial?.open      // objSchedule?.monday?.open
+        var textoHoraCloseAtual: String?    = diaInicial?.close     // objSchedule?.monday?.close
+        var textoIntervHorarios             = " $textoHoraOpenAtual $stringAt $textoHoraCloseAtual "
 
         var diasSequenciais = 0
 
@@ -171,6 +213,28 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
+    private fun buscaImagensFirestore( locId : String) {
+        FireStoreService.meuFireStore.instancia
+            .collection("location_images")
+            .whereEqualTo("location_id", locId)
+            .addSnapshotListener( object : EventListener<QuerySnapshot> {
+                override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+
+                    if(error != null){
+                        Log.e( "Firestore error ", error.message.toString() )
+                        return
+                    }
+                    for ( dc in value?.documentChanges!!){
+                        if( dc.type == DocumentChange.Type.ADDED){
+
+                            // ADICIONAMOS AS IMAGENS OBTIDAS NO FIRESTORE NO ARRAYLIST "minhasImgens"
+                            minhasImagens.add( dc.document.toObject(LocationImage::class.java))
+                        }
+                    }
+                }
+            })
+
+    }// FIM buscaImagensFirestore
 
     private fun acaoVoltar(){
         val toolbarDetail : Toolbar = findViewById(R.id.toolbar_detail)

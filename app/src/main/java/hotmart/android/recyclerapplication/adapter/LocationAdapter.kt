@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import hotmart.android.recyclerapplication.R
 import hotmart.android.recyclerapplication.activity.DetailActivity
-import hotmart.android.recyclerapplication.data.Datasource
-import hotmart.android.recyclerapplication.model.Afirmacao
 import hotmart.android.recyclerapplication.model.Location
 import hotmart.android.recyclerapplication.model.LocationImage
 import hotmart.android.recyclerapplication.service.FireStoreService

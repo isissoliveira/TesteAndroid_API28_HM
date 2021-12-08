@@ -87,6 +87,19 @@
             android:text="@string/fotos"
             android:layout_marginTop="32dp"/>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_fotos"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:scrollbars="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/id_textViewSobre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+
+                />
+
             <TextView
                 android:id="@+id/id_textViewSobre"
                 android:layout_width="match_parent"

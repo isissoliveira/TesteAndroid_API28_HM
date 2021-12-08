@@ -1,6 +1,5 @@
 package hotmart.android.recyclerapplication
 
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,9 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.google.firebase.firestore.*
 import hotmart.android.recyclerapplication.adapter.LocatioAdapter
-import hotmart.android.recyclerapplication.model.Location
 import hotmart.android.recyclerapplication.model.ListLocations
 import hotmart.android.recyclerapplication.model.LocationImage
 import hotmart.android.recyclerapplication.service.FireStoreService
@@ -24,9 +21,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var meuGridLayoutManager: RecyclerView.LayoutManager
     private lateinit var myAdapter: RecyclerView.Adapter<*>
     private lateinit var minhasImagens: ArrayList<LocationImage>
-    private lateinit var db: FirebaseFirestore
 
     val meuContexto = this
+    var cont= 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,33 +32,32 @@ class MainActivity : AppCompatActivity() {
         minhasImagens = ArrayList<LocationImage>()
 
         // FUNÇÃO PARA BUSCAR AS IMAGENS NO FIRESTORE
-        buscaImagensFirestore()
+        buscaImagens()
 
         meuGridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
-        preencheRecyclerView()
+        //trataRecyclerView()
+        //FireStoreService().cadastraImagens()
     }
 
-    private fun preencheRecyclerView() {
+    private fun trataRecyclerView() {
 
         SingleListLocationsApi.RETROFIT_INTERFACE.getListLocations().enqueue( object : Callback<ListLocations>{
 
             override fun onResponse( call: Call<ListLocations>, response: Response<ListLocations> ) {
 
-                if (response.isSuccessful) {
+                if (response.isSuccessful && response.body() != null) {
                     Log.i(TAG, "===============SUCESSO=================" )
 
                     recyclerView = findViewById<RecyclerView>(R.id.recycler_view).apply {
-                        myAdapter = LocatioAdapter( response.body()?.listLocations!!, minhasImagens )
-                        layoutManager = meuGridLayoutManager
-                        adapter = myAdapter
-
+                        myAdapter       = LocatioAdapter( response.body()?.listLocations!!, minhasImagens )
+                        layoutManager   = meuGridLayoutManager
+                        adapter         = myAdapter
                     }
                     recyclerView.setHasFixedSize(true)
 
                 }
             }
-
             override fun onFailure(call: Call<ListLocations>, t: Throwable) {
                 Toast.makeText( meuContexto, getString(R.string.falha_conexao) , Toast.LENGTH_LONG ).show()
             }
@@ -70,6 +66,31 @@ class MainActivity : AppCompatActivity() {
     } //FIM preencheRecyclerView
 
 
+    private fun buscaImagens( ) {
+        val imagensCadastradas = FireStoreService.meuFireStore.instancia
+            .collection("location_images")
+            .whereEqualTo("principal", true)
+
+        imagensCadastradas.get()
+            .addOnSuccessListener { documents ->
+                if (documents != null && cont == 0) {
+                    for( document in documents) {
+                        minhasImagens.add( document.toObject(LocationImage::class.java))
+                        cont++
+                    }
+                }
+                trataRecyclerView()
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, getString(R.string.falha_imagens), exception)
+                Toast.makeText(meuContexto, getString(R.string.falha_imagens), Toast.LENGTH_LONG).show()
+                trataRecyclerView()
+            }
+
+    }
+
+
+    /*
     private fun buscaImagensFirestore() {
         FireStoreService.meuFireStore.instancia
             .collection("location_images")
@@ -93,27 +114,7 @@ class MainActivity : AppCompatActivity() {
             })
 
     }// FIM buscaImagensFirestore
-
-    fun buscaImagem( ) {
-        val imagensCadastradas = FireStoreService.meuFireStore.instancia
-            .collection("location_images")
-            .whereEqualTo("principal", true)
-
-        imagensCadastradas.get()
-            .addOnSuccessListener { documents ->
-                if (documents != null ) {
-                    for( document in documents) {
-                        minhasImagens.add( document.toObject(LocationImage::class.java))
-                    }
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Não foi possível obter a imagem do Storage ", exception)
-            }
-
-    }
-
-
+    */
 
 
 }

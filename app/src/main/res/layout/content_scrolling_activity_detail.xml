@@ -20,19 +20,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="16dp"
-            android:paddingBottom="16dp"
+            android:paddingLeft="@dimen/padrao_margin"
+            android:paddingBottom="@dimen/padrao_margin"
             android:background="@color/topaz">
 
             <TextView
             android:id="@+id/id_textViewNameDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+                android:fontFamily="@font/open_sans_light"
             android:textStyle="normal"
             android:textSize="32sp"
             android:textColor="@color/white"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="@dimen/padrao_margin"/>
 
             <!-- RATING BAR-->
             <LinearLayout
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             style="@style/TextStyle"
             android:text="@string/fotos"
-            android:layout_marginTop="32dp"/>
+            android:layout_marginTop="@dimen/padrao_margin_dobrado"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_fotos"
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 style="@style/TextStyle"
                 android:text="@string/sobre"
-                android:layout_marginTop="32dp"/>
+                android:layout_marginTop="@dimen/padrao_margin_dobrado"/>
 
             <TextView
                 android:id="@+id/id_textViewSobreConteudo"
@@ -115,13 +115,13 @@
                 android:layout_height="wrap_content"
                 style="@style/TextStyle2"
                 android:justificationMode="inter_word"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="@dimen/padrao_margin"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="@dimen/padrao_margin">
 
                 <ImageView
                     android:id="@+id/id_imageViewSched"
@@ -133,7 +133,7 @@
                     android:id="@+id/id_textViewSchedule"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextStyle2"
+                    style="@style/TextStyle3"
                     android:layout_marginLeft="5dp"/>
             </LinearLayout>
 
@@ -141,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="@dimen/padrao_margin">
 
                 <ImageView
                     android:id="@+id/id_imageViewPhone"
@@ -153,7 +153,7 @@
                     android:id="@+id/id_textViewPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextStyle2"
+                    style="@style/TextStyle3"
                     android:layout_marginLeft="5dp"/>
             </LinearLayout>
 
@@ -161,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="@dimen/padrao_margin">
 
                 <ImageView
                     android:id="@+id/id_imageViewAddress"
@@ -173,7 +173,7 @@
                     android:id="@+id/id_textViewAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextStyle2"
+                    style="@style/TextStyle3"
                     android:justificationMode="inter_word"
                     android:layout_marginLeft="5dp"/>
             </LinearLayout>
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 style="@style/TextStyle"
                 android:text="@string/reviews"
-                android:layout_marginTop="32dp"/>
+                android:layout_marginTop="@dimen/padrao_margin_dobrado"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_reviews"
@@ -203,8 +203,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="19dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginTop="@dimen/padrao_margin_dobrado"
+                android:layout_marginBottom="@dimen/padrao_margin_dobrado"
                 android:layout_marginRight="26dp"
                 android:gravity="right"
                 android:columnCount="2"
@@ -215,7 +215,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:text="@string/fake_number_reviews"
                     android:textColor="@color/topaz"
                     android:gravity="center_horizontal"/>

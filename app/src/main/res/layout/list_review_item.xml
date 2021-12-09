@@ -7,8 +7,8 @@
     android:orientation="horizontal"
     android:layout_marginLeft="26dp"
     android:layout_marginRight="26dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp">
+    android:layout_marginTop="@dimen/padrao_margin"
+    android:layout_marginBottom="@dimen/padrao_margin">
 
         <androidx.cardview.widget.CardView
             android:layout_width="55dp"

@@ -7,6 +7,10 @@
     <string name="reviews">REVIEWS</string>
     <string name="vazio"/>
 
+    <string name="imagem_pincipal">Foto estabelecimento</string>
+    <string name="imagem_secundaria">mais fotos</string>
+    <string name="imagem_avatar">avatar</string>
+
     <string name="to"> a </string>
     <string name="and"> e </string>
     <string name="at"> às </string>

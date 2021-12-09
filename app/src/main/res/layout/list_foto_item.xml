@@ -7,8 +7,8 @@
     android:elevation="5dp"
     app:cardCornerRadius="8dp"
     android:id="@+id/id_cardView_foto"
-    android:layout_marginTop="16dp"
-    android:layout_marginRight="16dp"
+    android:layout_marginTop="@dimen/padrao_margin"
+    android:layout_marginRight="@dimen/padrao_margin"
     android:clickable="true">
     <ImageView
         android:id="@+id/id_imageView_foto"

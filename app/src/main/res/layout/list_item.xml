@@ -34,7 +34,7 @@
                 android:id="@+id/id_textViewName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 style="@style/TextStyle"/>
             <TextView
@@ -45,14 +45,14 @@
                 android:textStyle="normal"
                 android:textSize="14sp"
                 android:textColor="@color/brownish_grey"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="8dp">
+                android:layout_marginStart="8dp">
 
                 <RatingBar
                     android:id="@+id/id_ratingBarReview"

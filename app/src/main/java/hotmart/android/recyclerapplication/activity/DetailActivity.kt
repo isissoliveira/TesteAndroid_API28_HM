@@ -1,6 +1,5 @@
 package hotmart.android.recyclerapplication.activity
 
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -42,9 +41,9 @@ class DetailActivity : AppCompatActivity() {
 
         val locationId = this.intent.extras?.getInt("location_id").toString()
 
-        Log.i(ContentValues.TAG, "===============Location ID é $locationId=================" )
+        Log.i(TAG, "===============Location ID é $locationId=================" )
 
-        minhasImagens = ArrayList<LocationImage>()
+        minhasImagens = ArrayList()
 
         montaDados( locationId)
 
@@ -123,7 +122,7 @@ class DetailActivity : AppCompatActivity() {
 
                             if(imagens.isNotEmpty()){
                                 Picasso.with( meuContexto)
-                                    .load(imagens.get(0).storage )
+                                    .load(imagens[0].storage )
                                     .into(imgtoolbarDetail)
                             }
 
@@ -191,7 +190,7 @@ class DetailActivity : AppCompatActivity() {
         )
 
         //diasSchedules.forEach {  Log.i(ContentValues.TAG, "=======>${it?.open}" ) }
-        var indiceDiaInicial    : Int = 0
+        var indiceDiaInicial     = 0
         var diaInicial          : LocationDetail.Schedule.DaySchedule? = diasSchedules[0]
 
         // BUSCA O PRIMEIRO DIA PARA O QUAL HÁ SCHEDULE NO JSON
@@ -235,17 +234,16 @@ class DetailActivity : AppCompatActivity() {
             }
 
             //BUSCA OS PRÓXIMOS DIAS QUE TEM MESMO HORÁRIO DE open E close
-            if( sched.open.equals(textoHoraOpenAtual) && sched.close.equals(textoHoraCloseAtual)  ){
+            if( sched.open == textoHoraOpenAtual && sched.close == textoHoraCloseAtual){
                 textoIntervDiaFim = nomesDiasschedules[i]
                 diasSequenciais ++
             }
             // SE PRÓXIMO HORÁRIO É DIFERENTE DO INTERVALO ANTERIOR ADICIONAMOS O INTERVALO ANTERIOR EM "textoSched"
             else {
-                if( textoIntervDiaFim.isEmpty() ) {
-                    textoSched += "$textoIntervDiaIni : $textoIntervHorarios \n"
-                }
-                else{
-                    textoSched += "$textoIntervDiaIni ${ if(diasSequenciais > 1)  stringA else stringE } $textoIntervDiaFim : $textoIntervHorarios \n"
+                textoSched += if( textoIntervDiaFim.isEmpty() ) {
+                    "$textoIntervDiaIni : $textoIntervHorarios \n"
+                } else{
+                    "$textoIntervDiaIni ${ if(diasSequenciais > 1)  stringA else stringE } $textoIntervDiaFim : $textoIntervHorarios \n"
                 }
 
                 // REINICIAMOS AS VARIÁVEIS PARA RECOMEÇAR COM O PRÓXIMO INTERVALO open E close ENCONTRADO
@@ -259,11 +257,10 @@ class DetailActivity : AppCompatActivity() {
         } // FIM For
 
         // IMPRIME O ÚLTIMO INTERVALO ENCONTRADO
-        if( textoIntervDiaFim.isEmpty() ) {
-            textoSched += "$textoIntervDiaIni : $textoIntervHorarios "
-        }
-        else{
-            textoSched += "$textoIntervDiaIni $stringA $textoIntervDiaFim : $textoIntervHorarios "
+        textoSched += if( textoIntervDiaFim.isEmpty() ) {
+            "$textoIntervDiaIni : $textoIntervHorarios "
+        } else{
+            "$textoIntervDiaIni ${ if(diasSequenciais > 1)  stringA else stringE } $textoIntervDiaFim : $textoIntervHorarios "
         }
 
         return textoSched

@@ -11,7 +11,9 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationViewDetail">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_detail"
@@ -32,14 +34,23 @@
                 <ImageView
                     android:id="@+id/id_imageViewToolBar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"/>
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar_detail"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     app:layout_collapseMode="pin"
-                    app:popupTheme="@style/Theme.RecyclerApplication.PopupOverlay" />
+                    app:popupTheme="@style/Theme.RecyclerApplication.PopupOverlay" >
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="26dp"
+                        android:background="@drawable/ic_share"
+                        android:clickable="true"
+                        android:layout_gravity="end"/>
+                </androidx.appcompat.widget.Toolbar>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 

@@ -16,10 +16,6 @@ class FotoAdapter (private val dataset: List<LocationImage> ) : RecyclerView.Ada
         fun bind( locationImage : LocationImage ) {
 
             val imageView: ImageView = view.findViewById(R.id.id_imageView_foto)
-            imageView.setOnClickListener({
-                //TODO: chama função zoom
-            })
-
 
             locationImage?.let {
                 Picasso.with(view.context)
@@ -42,28 +38,6 @@ class FotoAdapter (private val dataset: List<LocationImage> ) : RecyclerView.Ada
     }
 
     override fun getItemCount() = dataset.size
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

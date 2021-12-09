@@ -17,7 +17,6 @@
             android:name=".activity.DetailActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.RecyclerApplication.NoActionBar" />
         <activity
             android:name=".MainActivity"

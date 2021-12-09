@@ -29,18 +29,37 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        cont= 0
         minhasImagens = ArrayList<LocationImage>()
-
-        // FUNÇÃO PARA BUSCAR AS IMAGENS NO FIRESTORE
-        buscaImagens()
-
         meuGridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
-        //trataRecyclerView()
-        //FireStoreService().cadastraImagens()
+        montaDados()
+
     }
 
-    private fun trataRecyclerView() {
+    private fun montaDados( ) {
+        val imagensCadastradas = FireStoreService.meuFireStore.instancia
+            .collection("location_images")
+            .whereEqualTo("principal", true)
+
+        imagensCadastradas.get()
+            .addOnSuccessListener { documents ->
+                if (documents != null && cont == 0) {
+                    for( document in documents) {
+                        minhasImagens.add( document.toObject(LocationImage::class.java))
+                        cont++
+                    }
+                }
+                montaRecyclerView()
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, getString(R.string.falha_imagens), exception)
+                Toast.makeText(meuContexto, getString(R.string.falha_imagens), Toast.LENGTH_LONG).show()
+                montaRecyclerView()
+            }
+    }
+
+    private fun montaRecyclerView() {
 
         SingleListLocationsApi.RETROFIT_INTERFACE.getListLocations().enqueue( object : Callback<ListLocations>{
 
@@ -63,58 +82,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-    } //FIM preencheRecyclerView
-
-
-    private fun buscaImagens( ) {
-        val imagensCadastradas = FireStoreService.meuFireStore.instancia
-            .collection("location_images")
-            .whereEqualTo("principal", true)
-
-        imagensCadastradas.get()
-            .addOnSuccessListener { documents ->
-                if (documents != null && cont == 0) {
-                    for( document in documents) {
-                        minhasImagens.add( document.toObject(LocationImage::class.java))
-                        cont++
-                    }
-                }
-                trataRecyclerView()
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, getString(R.string.falha_imagens), exception)
-                Toast.makeText(meuContexto, getString(R.string.falha_imagens), Toast.LENGTH_LONG).show()
-                trataRecyclerView()
-            }
-
-    }
-
-
-    /*
-    private fun buscaImagensFirestore() {
-        FireStoreService.meuFireStore.instancia
-            .collection("location_images")
-            .whereEqualTo("principal", true)
-            .orderBy("location_id")
-            .addSnapshotListener( object : EventListener<QuerySnapshot>{
-                override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-
-                    if(error != null){
-                        Log.e( "Firestore error ", error.message.toString() )
-                        return
-                    }
-                    for ( dc in value?.documentChanges!!){
-                        if( dc.type == DocumentChange.Type.ADDED){
-
-                            // ADICIONAMOS AS IMAGENS OBTIDAS NO FIRESTORE NO ARRAYLIST "minhasImgens"
-                            minhasImagens.add( dc.document.toObject(LocationImage::class.java))
-                        }
-                    }
-                }
-            })
-
-    }// FIM buscaImagensFirestore
-    */
+    } //FIM montaRecyclerView
 
 
 }

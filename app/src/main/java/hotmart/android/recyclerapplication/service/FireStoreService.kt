@@ -20,52 +20,9 @@ class FireStoreService {
     object meuFireStore {
         val instancia by lazy { FirebaseFirestore.getInstance() }
     }
-/*
-    fun buscaImagem( locationId : String, principal: Boolean ): String {
-        val imagensCadastradas = meuFireStore.instancia
-            .collection("location_images")
-            .whereEqualTo("location_id",locationId)
-            .whereEqualTo("principal", principal)
-            .orderBy("location_id")
-
-        var storages    = mutableListOf<String>()
-        var storage    : String = ""
-
-        imagensCadastradas.get()
-            .addOnSuccessListener { documents ->
-                if (documents != null ) {
-                    for( document in documents) {
-                        storage = "${document.get("storage")}"
-                        storages.add( storage )
-                        Log.i(ContentValues.TAG, "===============>PARA LOCATION ID [${document.get("location_id")}] :  [${storage}]=================" )
-                    }
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Não foi possível obter a imagem do Storage ", exception)
-            }
-        Log.i(ContentValues.TAG, "===============>img [${storages.size}] ->$storage =================" )
-
-        return storage
-    }
-*/
 
 
 
-    private fun cadastraImagem(locationImage : LocationImage, id: String){
-
-        meuFireStore.instancia.collection("location_images")
-            .document( id)
-            .set(locationImage, SetOptions.merge())
-            .addOnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.i(ContentValues.TAG, "===============Falha ao tentar cadastrar imagem=================" )
-                }
-                else{
-                    Log.i(ContentValues.TAG, "===============Cadastro realizado=================" )
-                }
-            }
-    }
 
     fun cadastraImagens (){
         val imagens = listOf(
@@ -274,6 +231,21 @@ class FireStoreService {
         for( (i,imagem) in imagens.withIndex()){
             cadastraImagem( imagem, i.toString())
         }
+    }
+
+    private fun cadastraImagem(locationImage : LocationImage, id: String){
+
+        meuFireStore.instancia.collection("location_images")
+            .document( id)
+            .set(locationImage, SetOptions.merge())
+            .addOnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.i(ContentValues.TAG, "===============Falha ao tentar cadastrar imagem=================" )
+                }
+                else{
+                    Log.i(ContentValues.TAG, "===============Cadastro realizado=================" )
+                }
+            }
     }
 
 

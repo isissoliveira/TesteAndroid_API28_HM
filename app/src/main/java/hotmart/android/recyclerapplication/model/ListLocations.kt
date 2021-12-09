@@ -1,7 +1,7 @@
 package hotmart.android.recyclerapplication.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 data class ListLocations (
-    @Json(name = "listLocations") val listLocations : List<Location>
+    @SerializedName( "listLocations") val listLocations : List<Location>
 )

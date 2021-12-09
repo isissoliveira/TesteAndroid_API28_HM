@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "722615764502",
+    "project_id": "places-732ad",
+    "storage_bucket": "places-732ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722615764502:android:735e573f696569d6ecd737",
+        "android_client_info": {
+          "package_name": "hotmart.android.recyclerapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722615764502-nhd4t2nvme891lqj89ils6nnset51nl8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTcq-DwO_im88XhAUIm_NRsRASKY4fEFU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722615764502-nhd4t2nvme891lqj89ils6nnset51nl8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

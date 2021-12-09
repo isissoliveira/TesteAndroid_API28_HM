@@ -7,12 +7,9 @@ import com.squareup.moshi.Json
 // Classe de dados que vai armazenar os dados de cada Location retornada pela API
 
 data class Location (
-    @Json(name = "id")   val id : Int,
-    @Json(name = "name")   val name : String,
-    @Json(name = "review")  val review : Double,
-    @Json(name = "type")  val type : String,
-
-        ){
-
-}
+    val id      : Int,
+    val name    : String,
+    val review  : Float,
+    val type    : String,
+        )
 

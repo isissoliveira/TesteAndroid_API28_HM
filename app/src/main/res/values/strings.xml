@@ -1,15 +1,31 @@
 <resources>
-    <string name="app_name">RecyclerApplication</string>
+    <string name="app_name">Desafio Hotmart</string>
 
-    <string name="afirmacao1">I am strong.</string>
-    <string name="afirmacao2">I believe in myself.</string>
-    <string name="afirmacao3">Each day is a new opportunity to grow and be a better version of myself.</string>
-    <string name="afirmacao4">Every challenge in my life is an opportunity to learn from.</string>
-    <string name="afirmacao5">I have so much to be grateful for.</string>
-    <string name="afirmacao6">Good things are always coming into my life.</string>
-    <string name="afirmacao7">New opportunities await me at every turn.</string>
-    <string name="afirmacao8">I have the courage to follow my heart.</string>
-    <string name="afirmacao9">Things will unfold at precisely the right time.</string>
-    <string name="afirmacao10">I will be present in all the moments that this day brings.</string>
     <string name="home">Home</string>
+    <string name="fotos">FOTOS</string>
+    <string name="sobre">SOBRE</string>
+    <string name="reviews">REVIEWS</string>
+    <string name="vazio"/>
+
+    <string name="imagem_pincipal">Foto estabelecimento</string>
+    <string name="imagem_secundaria">mais fotos</string>
+    <string name="imagem_avatar">avatar</string>
+
+    <string name="to"> a </string>
+    <string name="and"> e </string>
+    <string name="at"> às </string>
+
+    <string name="monday">seg</string>
+    <string name="tuesday">ter</string>
+    <string name="wednesday">qua</string>
+    <string name="thursday">qui</string>
+    <string name="friday">sex</string>
+    <string name="saturday">sáb</string>
+    <string name="sunday">dom</string>
+
+    <string name="falha_conexao">Não foi possível encontrar os dados desejados. Tente mais tarde</string>
+    <string name="falha_imagens">Não foi possível encontrar todas as imagens</string>
+    <string name="falha_reviews">Não foi possível carregar os comentários</string>
+
+    <string name="fake_number_reviews">ver todos os 146 reviews</string>
 </resources>

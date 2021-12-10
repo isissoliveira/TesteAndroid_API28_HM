@@ -4,6 +4,7 @@ Bem-vindo ao projeto Desafio Hotmart!
 - Projeto Android desenvolvido na linguagem Kotlin.
 - Target: API level 28.
 - Utilizadas bibliotecas de terceiros como Retrofit2, Gson, Picasso e Firebase
+- Realizados testes automatizados de interface
 
 Abaixo temos ilustrações da interface do app:
 

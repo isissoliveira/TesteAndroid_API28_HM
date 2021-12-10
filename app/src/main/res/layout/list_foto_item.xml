@@ -2,19 +2,20 @@
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="60dp"
-    android:layout_height="60dp"
+    android:layout_width="@dimen/min_height_recyclerview_fotos_detail"
+    android:layout_height="@dimen/min_height_recyclerview_fotos_detail"
     android:elevation="5dp"
     app:cardCornerRadius="8dp"
     android:id="@+id/id_cardView_foto"
     android:layout_marginTop="@dimen/padrao_margin"
-    android:layout_marginRight="@dimen/padrao_margin"
+    android:layout_marginEnd="@dimen/padrao_margin"
     android:clickable="true">
     <ImageView
         android:id="@+id/id_imageView_foto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
+        android:contentDescription="@string/vazio"
     />
 </androidx.cardview.widget.CardView>
 

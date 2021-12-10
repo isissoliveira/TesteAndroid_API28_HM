@@ -1,3 +1,37 @@
 <resources>
     <dimen name="fab_margin">200dp</dimen>
+    <dimen name="text_margin">20dp</dimen>
+
+       <dimen name="padrao_margin">20dp</dimen>
+       <dimen name="padrao_margin_dobrado">36dp</dimen>
+       <dimen name="margin_main_bottom">70dp</dimen>
+       <dimen name="margin_top_smallest">6dp</dimen>
+       <dimen name="margin_top_small">10dp</dimen>
+       <dimen name="margin_left_smallest">6dp</dimen>
+       <dimen name="margin_left_smallest2">7dp</dimen>
+       <dimen name="margin_left_small">12dp</dimen>
+       <dimen name="margin_left_small2">10dp</dimen>
+
+       <dimen name="text_size_smallest">16sp</dimen>
+       <dimen name="text_size_small">20sp</dimen>
+       <dimen name="text_size_regular">22sp</dimen>
+       <dimen name="text_size_large">40sp</dimen>
+
+      <!--TELA PRINCIPAL-->
+       <dimen name="padding_main_LRT">12dp</dimen>
+        <!-- RECYCLERVIEW LIST ITEM-->
+        <dimen name="margin_left_item_main_cardview">10dp</dimen>
+        <dimen name="min_height_ratingbar">15dp</dimen>
+
+    <!-- TELA DETALHES-->
+    <dimen name="height_appbar_detail">350dp</dimen>
+    <dimen name="height_toolbar_detail">60dp</dimen>
+    <dimen name="height_icon_share_detail">32dp</dimen>
+    <dimen name="min_height_ratingbar_title_detail">20dp</dimen>
+    <dimen name="width_icon_share_detail">30dp</dimen>
+    <dimen name="margin_content_detail_LR">30dp</dimen>
+    <dimen name="min_height_recyclerview_fotos_detail">100dp</dimen>
+    <dimen name="height_width_icons_detail">25dp</dimen>
+    <dimen name="height_see_more_reviews_detail">23dp</dimen>
+
 </resources>

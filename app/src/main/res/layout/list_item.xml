@@ -4,61 +4,60 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="20dp"
         app:cardCornerRadius="15dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/margin_main_cardview_LRB"
+        android:layout_marginRight="@dimen/margin_main_cardview_LRB"
+        android:layout_marginBottom="@dimen/margin_main_cardview_LRB"
+        android:layout_marginTop="@dimen/margin_main_cardview_T"
         android:id="@+id/id_cardView"
-
         android:clickable="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="19dp">
+            android:paddingBottom="@dimen/padding_main_cardview_B">
             <ImageView
                 android:id="@+id/id_imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="100dp"
-                android:maxHeight="214dp"
+                android:minHeight="@dimen/min_height_img_main_cardview"
+                android:maxHeight="@dimen/max_height_img_main_cardview"
                 android:background="@color/creme"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/vazio"/>
             <TextView
                 android:id="@+id/id_textViewName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/margin_left_item_main_cardview"
+                android:layout_marginTop="@dimen/margin_top_small"
                 style="@style/TextStyle"/>
             <TextView
                 android:id="@+id/id_textViewType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:textStyle="normal"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/brownish_grey"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"/>
+                android:layout_marginStart="@dimen/margin_left_item_main_cardview"
+                android:layout_marginTop="@dimen/margin_top_smallest"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:layout_marginTop="4dp"
-                android:layout_marginStart="8dp">
+                android:layout_marginTop="@dimen/margin_top_smallest"
+                android:layout_marginStart="@dimen/margin_left_item_main_cardview">
 
                 <RatingBar
                     android:id="@+id/id_ratingBarReview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:minHeight="10dp"
+                    android:minHeight="@dimen/min_height_ratingbar"
                     android:max="5"
                     android:numStars="5"
                     android:stepSize="1"
@@ -75,9 +74,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_size_smallest"
                     android:textColor="@color/black_two"
-                    android:layout_marginLeft="4dp"/>
+                    android:layout_marginStart="@dimen/margin_left_smallest"/>
 
             </LinearLayout>
 

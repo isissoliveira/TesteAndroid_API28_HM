@@ -23,14 +23,14 @@ class FireStoreService {
 
 
 
-
+/*
     fun cadastraImagens (){
         val imagens = listOf(
             LocationImage("https://firebasestorage.googleapis.com/v0/b/places-732ad.appspot.com/o/Location1%2Fcafe_principal.jpg?alt=media&token=9eb5e72d-6fc0-4e99-84b5-ea428e85dfe4"
                 ,"1", true) ,
             LocationImage("https://firebasestorage.googleapis.com/v0/b/places-732ad.appspot.com/o/Location2%2Fhangar_principal2.jpg?alt=media&token=e33969e1-8e4b-4db3-bd20-f107569b4eb4"
                 ,"2", true) ,
-            LocationImage("https://firebasestorage.googleapis.com/v0/b/places-732ad.appspot.com/o/Location3%2Fpelicano_principal.jpg?alt=media&token=8831b783-4759-4b1c-a66b-cc5136000098"
+            LocationImage("https://firebasestorage.googleapis.com/v0/b/places-732ad.appspot.com/o/Location3%2Fpelicano_principal2.jpg?alt=media&token=7191b71f-21f9-4f40-a12f-36f3a8909971"
                 ,"3", true) ,
             LocationImage("https://firebasestorage.googleapis.com/v0/b/places-732ad.appspot.com/o/Location4%2Fkpopka_prinicpal2.jpg?alt=media&token=509b3b3e-f293-42dc-9865-c38e72959921"
                 ,"4", true) ,
@@ -247,6 +247,6 @@ class FireStoreService {
                 }
             }
     }
-
+*/
 
 }

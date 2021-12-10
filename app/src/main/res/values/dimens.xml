@@ -2,6 +2,49 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
     <dimen name="padrao_margin">16dp</dimen>
     <dimen name="padrao_margin_dobrado">32dp</dimen>
+    <dimen name="margin_main_bottom">50dp</dimen>
+    <dimen name="margin_top_smallest">4dp</dimen>
+    <dimen name="margin_top_small">8dp</dimen>
+    <dimen name="margin_left_smallest">4dp</dimen>
+    <dimen name="margin_left_smallest2">5dp</dimen>
+    <dimen name="margin_left_small">10dp</dimen>
+    <dimen name="margin_left_small2">8dp</dimen>
+
+    <dimen name="text_size_smallest">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_regular">16sp</dimen>
+    <dimen name="text_size_large">32sp</dimen>
+
+
+
+    <!-- BOTTOM NAVIGATION BAR -->
+    <dimen name="padding_bottom_nav_LR">10dp</dimen>
+    <dimen name="height_bottom_nav">60dp</dimen>
+
+    <!-- TELA PRINCIPAL -->
+    <dimen name="padding_main_LRT">8dp</dimen>
+        <!-- RECYCLERVIEW LIST ITEM -->
+        <dimen name="padding_main_cardview_B">19dp</dimen>
+        <dimen name="margin_main_cardview_LRB">10dp</dimen>
+        <dimen name="margin_main_cardview_T">8dp</dimen>
+        <dimen name="min_height_img_main_cardview">100dp</dimen>
+        <dimen name="max_height_img_main_cardview">214dp</dimen>
+        <dimen name="margin_left_item_main_cardview">8dp</dimen>
+        <dimen name="min_height_ratingbar">10dp</dimen>
+
+    <!-- TELA DETALHES -->
+    <dimen name="height_appbar_detail">300dp</dimen>
+    <dimen name="height_toolbar_detail">40dp</dimen>
+    <dimen name="height_icon_share_detail">20dp</dimen>
+    <dimen name="min_height_ratingbar_title_detail">15dp</dimen>
+    <dimen name="width_icon_share_detail">18dp</dimen>
+    <dimen name="margin_content_detail_LR">26dp</dimen>
+    <dimen name="min_height_recyclerview_fotos_detail">60dp</dimen>
+    <dimen name="height_width_icons_detail">20dp</dimen>
+    <dimen name="height_see_more_reviews_detail">19dp</dimen>
+
+
 </resources>

@@ -276,6 +276,7 @@ class DetailActivity : AppCompatActivity() {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24)
             actionBar.setTitle(R.string.vazio)
+
         }
         toolbarDetail.setNavigationOnClickListener{ onBackPressed() }
     }

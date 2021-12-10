@@ -20,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="@dimen/padrao_margin"
+            android:paddingStart="@dimen/padrao_margin"
+            android:paddingEnd="@dimen/padrao_margin"
             android:paddingBottom="@dimen/padrao_margin"
             android:background="@color/topaz">
 
@@ -30,7 +31,7 @@
             android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_light"
             android:textStyle="normal"
-            android:textSize="32sp"
+            android:textSize="@dimen/text_size_large"
             android:textColor="@color/white"
             android:layout_marginTop="@dimen/padrao_margin"/>
 
@@ -39,13 +40,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="@dimen/margin_top_small">
 
                 <RatingBar
                     android:id="@+id/id_ratingBarReviewDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:minHeight="15dp"
+                    android:minHeight="@dimen/min_height_ratingbar_title_detail"
                     android:max="5"
                     android:numStars="5"
                     android:stepSize="1"
@@ -62,9 +63,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/text_size_small"
                     android:textColor="@color/white"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginStart="@dimen/margin_left_small"/>
 
             </LinearLayout>
 
@@ -75,8 +76,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="26dp"
-            android:layout_marginRight="26dp"
+            android:layout_marginLeft="@dimen/margin_content_detail_LR"
+            android:layout_marginRight="@dimen/margin_content_detail_LR"
             android:orientation="vertical">
 
             <TextView
@@ -91,7 +92,7 @@
                 android:id="@+id/recycler_view_fotos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="60dp"
+                android:minHeight="@dimen/min_height_recyclerview_fotos_detail"
                 android:scrollbars="horizontal"
                 app:layout_constraintBottom_toTopOf="@+id/id_textViewSobre"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -125,16 +126,17 @@
 
                 <ImageView
                     android:id="@+id/id_imageViewSched"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/height_width_icons_detail"
+                    android:layout_height="@dimen/height_width_icons_detail"
                     android:background="@drawable/ic_time"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/vazio"/>
                 <TextView
                     android:id="@+id/id_textViewSchedule"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/TextStyle3"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginStart="@dimen/margin_left_smallest2"/>
             </LinearLayout>
 
             <LinearLayout
@@ -145,16 +147,17 @@
 
                 <ImageView
                     android:id="@+id/id_imageViewPhone"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/height_width_icons_detail"
+                    android:layout_height="@dimen/height_width_icons_detail"
                     android:background="@drawable/ic_phone"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/vazio"/>
                 <TextView
                     android:id="@+id/id_textViewPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/TextStyle3"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginStart="@dimen/margin_left_smallest2"/>
             </LinearLayout>
 
             <LinearLayout
@@ -165,17 +168,18 @@
 
                 <ImageView
                     android:id="@+id/id_imageViewAddress"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/height_width_icons_detail"
+                    android:layout_height="@dimen/height_width_icons_detail"
                     android:background="@drawable/ic_pin"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/vazio"/>
                 <TextView
                     android:id="@+id/id_textViewAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/TextStyle3"
                     android:justificationMode="inter_word"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginStart="@dimen/margin_left_smallest2"/>
             </LinearLayout>
 
 
@@ -191,7 +195,7 @@
                 android:id="@+id/recycler_view_reviews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="60dp"
+                android:minHeight="@dimen/min_height_recyclerview_fotos_detail"
                 android:scrollbars="vertical"
                 app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewDetail"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -201,13 +205,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="19dp"
+                android:layout_height="@dimen/height_see_more_reviews_detail"
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/padrao_margin_dobrado"
                 android:layout_marginBottom="@dimen/padrao_margin_dobrado"
-                android:layout_marginRight="26dp"
-                android:gravity="right"
-                android:columnCount="2"
+                android:layout_marginEnd="@dimen/margin_content_detail_LR"
+                android:gravity="end"
                 android:clickable="true">
 
                 <TextView
@@ -215,7 +218,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/text_size_small"
                     android:text="@string/fake_number_reviews"
                     android:textColor="@color/topaz"
                     android:gravity="center_horizontal"/>
@@ -223,9 +226,10 @@
                 <ImageView
                     android:layout_width="12dp"
                     android:layout_height="11dp"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="@dimen/margin_left_item_main_cardview"
                     android:background="@drawable/ic_arrows"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/vazio"/>
             </LinearLayout>
 
 

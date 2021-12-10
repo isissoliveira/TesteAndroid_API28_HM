@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
-    android:paddingTop="8dp">
+    android:paddingLeft="@dimen/padding_main_LRT"
+    android:paddingRight="@dimen/padding_main_LRT"
+    android:paddingTop="@dimen/padding_main_LRT">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -19,19 +19,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="@dimen/margin_main_bottom"
         />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/height_bottom_nav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingLeft="@dimen/padding_bottom_nav_LR"
+        android:paddingRight="@dimen/padding_bottom_nav_LR"
         app:itemIconTint="@color/topaz"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

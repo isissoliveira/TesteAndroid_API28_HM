@@ -1,6 +1,7 @@
 package hotmart.android.recyclerapplication.activity
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.telephony.PhoneNumberUtils
@@ -12,11 +13,13 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 import com.squareup.picasso.Picasso
+import hotmart.android.recyclerapplication.MainActivity
 import hotmart.android.recyclerapplication.R
 import hotmart.android.recyclerapplication.adapter.FotoAdapter
 import hotmart.android.recyclerapplication.adapter.ReviewAdapter
@@ -47,7 +50,7 @@ class DetailActivity : AppCompatActivity() {
 
         montaDados( locationId)
 
-        acaoVoltar()
+        acaoVoltarHome()
     }
 
 
@@ -267,8 +270,14 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
-    private fun acaoVoltar(){
+    private fun acaoVoltarHome(){
         val toolbarDetail : Toolbar = findViewById(R.id.toolbar_detail)
+        val home : BottomNavigationItemView = findViewById(R.id.home_on)
+
+        home.setOnClickListener(){
+            val intent = Intent(meuContexto, MainActivity::class.java)
+            home.context.startActivity(intent)
+        }
 
         setSupportActionBar( toolbarDetail )
         val actionBar = supportActionBar
@@ -276,6 +285,7 @@ class DetailActivity : AppCompatActivity() {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24)
             actionBar.setTitle(R.string.vazio)
+
         }
         toolbarDetail.setNavigationOnClickListener{ onBackPressed() }
     }

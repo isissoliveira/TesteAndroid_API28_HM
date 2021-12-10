@@ -5,8 +5,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:layout_marginLeft="26dp"
-    android:layout_marginRight="26dp"
+    android:layout_marginLeft="@dimen/margin_content_detail_LR"
+    android:layout_marginRight="@dimen/margin_content_detail_LR"
     android:layout_marginTop="@dimen/padrao_margin"
     android:layout_marginBottom="@dimen/padrao_margin">
 
@@ -15,7 +15,7 @@
             android:layout_height="55dp"
             app:cardCornerRadius="250dp"
             app:cardBackgroundColor="@color/white"
-            android:layout_marginLeft="1dp">
+            android:layout_marginStart="1dp">
             <androidx.cardview.widget.CardView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -26,7 +26,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/ic_pin"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/vazio"/>
             </androidx.cardview.widget.CardView>
         </androidx.cardview.widget.CardView>
 
@@ -34,14 +35,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="4dp"
-            android:layout_marginLeft="8dp">
+            android:layout_marginTop="@dimen/margin_top_smallest"
+            android:layout_marginStart="@dimen/margin_left_small2">
 
             <RatingBar
                 android:id="@+id/id_ratingBarReviewComent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="10dp"
+                android:minHeight="@dimen/min_height_ratingbar"
                 android:max="5"
                 android:numStars="5"
                 android:stepSize="1"
@@ -58,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="normal"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_regular"
                 android:layout_marginTop="1dp"
                 android:textColor="@color/topaz"/>
             <TextView
@@ -66,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="normal"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_size_small"
                 android:layout_marginTop="1dp"
                 android:textColor="@color/brownish_grey"/>
             <TextView
@@ -74,8 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="normal"
-                android:textSize="12sp"
-                android:layout_marginTop="4dp"
+                android:textSize="@dimen/text_size_smallest"
+                android:layout_marginTop="@dimen/margin_top_smallest"
                 android:textColor="@color/warm_grey"/>
 
         </LinearLayout>

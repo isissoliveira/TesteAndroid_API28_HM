@@ -10,12 +10,13 @@ android {
 
     defaultConfig {
         applicationId "hotmart.android.recyclerapplication"
-        minSdk 28
-        targetSdk 31
+        minSdk 21
+        targetSdk 28
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {

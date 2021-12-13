@@ -49,7 +49,6 @@
                         android:layout_width="@dimen/width_icon_share_detail"
                         android:layout_height="@dimen/height_icon_share_detail"
                         android:layout_marginEnd="@dimen/margin_content_detail_LR"
-                        android:background="@drawable/ic_share"
                         app:srcCompat="@drawable/ic_share"
                         android:clickable="true"
                         android:focusable="true"

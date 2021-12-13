@@ -13,13 +13,13 @@
         <androidx.cardview.widget.CardView
             android:layout_width="55dp"
             android:layout_height="55dp"
-            app:cardCornerRadius="250dp"
+            app:cardCornerRadius="25dp"
             app:cardBackgroundColor="@color/white"
             android:layout_marginStart="1dp">
             <androidx.cardview.widget.CardView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:cardCornerRadius="250dp"
+                app:cardCornerRadius="25dp"
                 android:layout_gravity="center">
                 <ImageView
                     android:id="@+id/id_imageViewReviewAvatar"
